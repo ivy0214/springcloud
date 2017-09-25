@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:tns="http://com.ivy.project/definitions" 
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	xmlns:schema="http://com.ivy.project/hr"
+	targetNamespace="http://com.ivy.project/definitions">
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import schemaLocation="hr.xsd" namespace="http://com.ivy.project/hr"></xsd:import>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="HolidayRequest">
+    <wsdl:part element="schema:HolidayRequest" name="HolidayRequest"/>
+  </wsdl:message>
+  
+  <wsdl:portType name="HolidayService">
+    <wsdl:operation name="holidayMethod">
+      <wsdl:input message="tns:HolidayRequest"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HolidayServiceBinding" type="tns:HolidayService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="holidayMethod">
+      <soap:operation soapAction="http://com.ivy.project/definitions/holidayMethod"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HolidayService">
+    <wsdl:port binding="tns:HolidayServiceBinding" name="holidayService">
+      <soap:address location="http://localhost:8080/holidayService/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
