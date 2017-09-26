@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/web-services http://www.springframework.org/schema/web-services/web-services-2.0.xsd">
 		<context:component-scan base-package="com.ivy"></context:component-scan>
 		<sws:annotation-driven/>
-		<sws:dynamic-wsdl id="holiday" portTypeName="HolidayService" locationUri="/holidayMethod"
+		<sws:dynamic-wsdl id="holiday" portTypeName="HolidayService" locationUri="/HolidayService"
 			targetNamespace="http://com.ivy.project/definitions">
 			<sws:xsd location="/WEB-INF/classes/hr.xsd"/>
 		</sws:dynamic-wsdl>

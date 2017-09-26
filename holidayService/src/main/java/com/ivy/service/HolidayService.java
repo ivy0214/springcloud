@@ -8,6 +8,7 @@
  */
 package com.ivy.service;
 
+
 import org.jdom2.Element;
 import org.jdom2.Namespace;
 import org.jdom2.filter.Filters;
@@ -16,6 +17,9 @@ import org.jdom2.xpath.XPathFactory;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
+import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+
+import com.ivy.bean.HolidayResponse;
 
 /**
  * ClassName: HolidayService <br/>
@@ -38,7 +42,8 @@ public class HolidayService
 	 * @since JDK 1.8
 	 */
 	@PayloadRoot(namespace=NAMESPACE_URI, localPart="HolidayRequest")
-	public void holidayMethod(@RequestPayload Element holidayRequest)
+	@ResponsePayload
+	public HolidayResponse holidayMethod(@RequestPayload Element holidayRequest)
 	{
 		Namespace namespace = Namespace.getNamespace("hr", NAMESPACE_URI);
 		
@@ -54,5 +59,17 @@ public class HolidayService
 		Element firstNameElement = firstNameExpression.evaluateFirst(holidayRequest);
 		Element lastNameElement = lastNameExpression.evaluateFirst(holidayRequest);
 		System.out.println(startDateElement.getText() + "," + endDateElement.getText() + "," + firstNameElement.getText() + ","+ lastNameElement.getText() + ",");
+		HolidayResponse response = new HolidayResponse();
+		response.setResult("success");
+		return response;
+	}
+	@PayloadRoot(namespace=NAMESPACE_URI, localPart="IsAliveRequest")
+	@ResponsePayload
+	public HolidayResponse isAlive()
+	{
+		System.out.println("get request....");
+		HolidayResponse response = new HolidayResponse();
+		response.setResult("success");
+		return response;
 	}
 }

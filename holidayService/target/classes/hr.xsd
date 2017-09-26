@@ -23,4 +23,16 @@
 			</all>
 		</complexType>
 	</element>
+	
+	<element name="HolidayResponse">
+		<complexType>
+			<all>
+				<element name="result" type="string"></element>
+			</all>
+		</complexType>
+	</element>
+	
+	<element name="IsAliveRequest" type="string">
+		
+	</element>
 </schema>
