@@ -32,7 +32,6 @@
 		</complexType>
 	</element>
 	
-	<element name="IsAliveRequest" type="string">
-		
+	<element name="IsAliveRequest" type="string">	
 	</element>
 </schema>
